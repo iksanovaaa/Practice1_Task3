@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+// 59(з). Даны действительные числа х, у. Определить, принадлежит ли точка с координатами (х, у) заштрихованной части плоскости
 namespace Task3
 {
     class Program
