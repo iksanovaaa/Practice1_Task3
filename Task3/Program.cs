@@ -14,10 +14,8 @@ namespace Task3
             bool end = false;
             do
             {
-                Console.WriteLine("Введите х:");
-                double x = CheckDouble();
-                Console.WriteLine("Введите y:");
-                double y = CheckDouble();
+                double x = CheckDouble("Введите х:");
+                double y = CheckDouble("Введите y:");
                 bool belongs = InRectangle(x, y) && !InTriangle(x, y);
                 if (belongs) PrintTrue(x, y);
                 else PrintFalse(x, y);
@@ -25,8 +23,10 @@ namespace Task3
             } while (!end);
         }
 
-        public static double CheckDouble()
+        //проверка ввода действительного числа
+        public static double CheckDouble(string s)
         {
+            Console.WriteLine(s);
             double number;
             bool okay = false;
             do
@@ -36,28 +36,38 @@ namespace Task3
             } while (!okay);
             return number;
         }
+
+        //проверка точки на принадлежность прямоугольной области
         public static bool InRectangle(double x, double y)
         {
             bool belongsRect = (y >= -2 && y <= 1) && (x >= -1 && x <= 1);
             return belongsRect;
         }
+
+        //проверка точки на принадлежность треугольной области
         public static bool InTriangle(double x, double y)
         {
             bool belongsTr = (y > x) && (y > -x);
             return belongsTr;
         }
+
+        //вывод сообщения в случае, если точка принадлежит заданной области
         public static void PrintTrue(double x, double y)
         {
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("Точка ({0};{1}) принадлежит заданной области", x, y);
             Console.ResetColor();
         }
+
+        //вывод сообщения в случае, если точка не принадлежит заданной области
         public static void PrintFalse(double x, double y)
         {
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("Точка ({0};{1}) не принадлежит заданной области", x, y);
             Console.ResetColor();
         }
+
+        //проверка на выход из программы
         public static bool CheckKey()
         {
             bool next, end = false;
